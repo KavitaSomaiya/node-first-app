@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>First App</title>
+    </head>
+    <body onload='loadData()'>
+        <form action = "http://localhost:5000/addUser" method = "POST">
+            Image Source: <input type = "text" name = "img_url">  <br>
+            Name: <input type = "text" name = "name">  <br>
+            Price: <input type = "text" name = "price">  <br>
+            Retail Price: <input type = "text" name = "retail_price">  <br>
+            Discount: <input type = "text" name = "discount">  <br>
+            <input type = "submit" value = "Submit" onclick='addUser()'>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Retail Price</td>
+                    <td>Discout</td>
+                </tr>
+            </thead>
+            <tbody id='my-data'>
+
+            </tbody>
+        </table>
+        <script>
+            function loadData() {
+                fetch('http://localhost:5000/product.json').then(function (res) {
+                    return res.json();
+                }).then(function (myJson) {
+                    console.log(JSON.stringify(myJson));
+                    let tableLines = ''
+                    myJson.data.forEach(item => {
+                        tableLines +=
+                        `
+                        <tr>
+                            <td><img src='${item.indexImgUrl}' width='auto' height='160px'/></td>
+                            <td>${item.name}</td>
+                            <td>${item.price}</td>
+                            <td>${item.retailPrice}</td>
+                            <td>${item.discount}</td>
+                        </tr>
+
+                        `
+                    })
+                    document.querySelector('#my-data').innerHTML = tableLines
+                })
+            }
+            function addUser () {
+
+            }
+        </script>
+    </body>
+</html>
