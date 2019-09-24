@@ -50,22 +50,44 @@
                 })
             }
             function addUser () {
-                var imgUrl = document.querySelector('#imgUrl').value
-                var name = document.querySelector('#name').value
-                var price = document.querySelector('#price').value
-                var retailPrice = document.querySelector('#retailPrice').value
-                var discount = document.querySelector('#discount').value
-
-                var newUser = {
-                    "data" :
-                    [{
-                        imgUrl,
-                        name,
-                        price,
-                        retailPrice,
-                        discount
-                    }]
-                }
+                fetch('http://localhost:5000/product.json').then(function (res) {
+                    return res.json();
+                }).then(function (myJson) {
+                    console.log(JSON.stringify(myJson))
+                    
+                    var imgUrl = document.querySelector('#imgUrl').value
+                    var name = document.querySelector('#name').value
+                    var price = document.querySelector('#price').value
+                    var retailPrice = document.querySelector('#retailPrice').value
+                    var discount = document.querySelector('#discount').value
+                    
+                    var newUser = {
+                        "data" :
+                        [{
+                            imgUrl,
+                            name,
+                            price,
+                            retailPrice,
+                            discount
+                        }]
+                    }
+                    var newMyJson = myJson.data.push(newUser)
+                    console.log(JSON.stringify(newMyJson))
+                    let tableLines = ''
+                    newMyJson.data.forEach(item => {
+                        tableLines +=
+                        `
+                            <tr>
+                                <td><img src='${item.indexImgUrl}' width='auto' height='160px'/></td>
+                                <td>${item.name}</td>
+                                <td>${item.price}</td>
+                                <td>${item.retailPrice}</td>
+                                <td>${item.discount}</td>
+                            </tr>
+                        `
+                    })
+                    document.querySelector('#my-data').innerHTML = tableLines
+                })
             }
         </script>
     </body>

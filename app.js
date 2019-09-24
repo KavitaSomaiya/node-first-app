@@ -22,19 +22,19 @@ var newUser = {
     }]
 }
 
-var newUserObj = JSON.parse(newUser)
-console.log(newUserObj)
+// var newUserObj = JSON.parse(newUser)
+// console.log(newUserObj)
 
-var newUserContent = JSON.stringify(newUserObj)
-console.log(newUserContent)
+// var newUserContent = JSON.stringify(newUserObj)
+// console.log(newUserContent)
 
-fs.writeFile('product.json', newUserContent, 'utf8', function (err) {
-    if (err) {
-        console.log('An error occured while writing JSON Object to File."')
-        return console.log(err)
-    }
-    console.log('JSON file has been saved.')
-})
+// fs.writeFile('product.json', newUserContent, 'utf8', function (err) {
+//     if (err) {
+//         console.log('An error occured while writing JSON Object to File."')
+//         return console.log(err)
+//     }
+//     console.log('JSON file has been saved.')
+// })
 
 var fileServer = new nStatic.Server('./public')
 
