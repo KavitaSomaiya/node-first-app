@@ -5,11 +5,11 @@
     </head>
     <body onload='loadData()'>
         <form action = "http://localhost:5000/addUser" method = "POST">
-            Image Source: <input type = "text" name = "img_url">  <br>
-            Name: <input type = "text" name = "name">  <br>
-            Price: <input type = "text" name = "price">  <br>
-            Retail Price: <input type = "text" name = "retail_price">  <br>
-            Discount: <input type = "text" name = "discount">  <br>
+            Image Source: <input type = "text" name = "img_url" id='imgUrl'>  <br>
+            Name: <input type = "text" name = "name" id='name'>  <br>
+            Price: <input type = "text" name = "price" id='price'>  <br>
+            Retail Price: <input type = "text" name = "retail_price" id='retailPrice'>  <br>
+            Discount: <input type = "text" name = "discount" id='discount'>  <br>
             <input type = "submit" value = "Submit" onclick='addUser()'>
         </form>
         <table>
@@ -49,9 +49,7 @@
                     document.querySelector('#my-data').innerHTML = tableLines
                 })
             }
-            function addUser () {
-
-            }
         </script>
+        <script src="app.js"></script>
     </body>
 </html>
