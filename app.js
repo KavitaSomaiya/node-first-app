@@ -1,62 +1,44 @@
 
-var express = require('express')
-var app = express()
 var fs = require('fs')
-// var bodyParser = require('body-parser')
-// var multer = require('multer')
+var http = require('http')
+var bodyParser = require('body-parser')
+var multer = require('multer')
+var nStatic =  require('node-static')
+var express = require('express')
+
+var app = express()
 
 app.use(express.static('public'))
 
-function addUser () {
-    var imgUrl = document.querySelector('#imgUrl').value
-    var name = document.querySelector('#name').value
-    var price = document.querySelector('#price').value
-    var retailPrice = document.querySelector('#retailPrice').value
-    var discount = document.querySelector('#discount').value
-
-    var newUser = {
-        "data" :
-        [{
-          imgUrl,
-          name,
-          price,
-          retailPrice,
-          discount
-        }]
-    }
-
-    var newUserObj = JSON.parse(newUser)
-    console.log(newUserObj)
-
-    var newUserContent = JSON.stringify(newUserObj)
-    console.log(newUserContent)
-
-    fs.writeFile('product.json', newUserContent, 'utf8', function (err) {
-        if (err) {
-            console.log('An error occured while writing JSON Object to File."')
-            return console.log(err)
-        }
-        console.log('JSON file has been saved.')
-    })
+var newUser = {
+    "data" :
+    [{
+      "indexImgUrl":"./images/mob-1.jpeg",
+      "name":"Vivo V15 Pro (Topaz Blue, 128 GB)  (6 GB RAM)",
+      "price":"26,990",
+      "retailPrice":"32,990",
+      "discount": 18,
+      "dataNumber": 1
+    }]
 }
 
-var http = require('http')
-var nStatic =  require('node-static')
+var newUserObj = JSON.parse(newUser)
+console.log(newUserObj)
+
+var newUserContent = JSON.stringify(newUserObj)
+console.log(newUserContent)
+
+fs.writeFile('product.json', newUserContent, 'utf8', function (err) {
+    if (err) {
+        console.log('An error occured while writing JSON Object to File."')
+        return console.log(err)
+    }
+    console.log('JSON file has been saved.')
+})
+
 var fileServer = new nStatic.Server('./public')
 
 http.createServer(function (req, res) {
     fileServer.serve(req, res);
 }).listen(5000);
 console.log('App running at localhost:5000')
-
-// var newUser = {
-//     "data" :
-//     [{
-//       "indexImgUrl":"./images/mob-1.jpeg",
-//       "name":"Vivo V15 Pro (Topaz Blue, 128 GB)  (6 GB RAM)",
-//       "price":"26,990",
-//       "retailPrice":"32,990",
-//       "discount": 18,
-//       "dataNumber": 1
-//     }]
-// }

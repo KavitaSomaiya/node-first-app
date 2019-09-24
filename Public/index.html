@@ -49,7 +49,24 @@
                     document.querySelector('#my-data').innerHTML = tableLines
                 })
             }
+            function addUser () {
+                var imgUrl = document.querySelector('#imgUrl').value
+                var name = document.querySelector('#name').value
+                var price = document.querySelector('#price').value
+                var retailPrice = document.querySelector('#retailPrice').value
+                var discount = document.querySelector('#discount').value
+
+                var newUser = {
+                    "data" :
+                    [{
+                        imgUrl,
+                        name,
+                        price,
+                        retailPrice,
+                        discount
+                    }]
+                }
+            }
         </script>
-        <script src="app.js"></script>
     </body>
 </html>
