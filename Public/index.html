@@ -1,80 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
     <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no'>
+        <link rel='shortcut icon' type='image/x-icon' href='./images/k-icon-9.jpg' sizes='32*32' />
         <title>First App</title>
+        <link href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' rel='stylesheet' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous' />
+        <style>
+          /* font-family: 'Roboto', sans-serif; */
+          @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+          /* font-family: 'Roboto Slab', serif; */
+          @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
+          @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+        </style>
+        <link rel='stylesheet' href='./bootstrap.min.css' />
+        <link rel='stylesheet' href='./animate.css' />
+        <link rel='stylesheet' href='./index.css' />
     </head>
-    <body onload='loadData()'>
-        <form action = "http://localhost:5000/addUser" method = "POST">
-            Image Source: <input type = "text" name = "img_url" id='imgUrl'>  <br>
-            Name: <input type = "text" name = "name" id='name'>  <br>
-            Price: <input type = "text" name = "price" id='price'>  <br>
-            Retail Price: <input type = "text" name = "retail_price" id='retailPrice'>  <br>
-            Discount: <input type = "text" name = "discount" id='discount'>  <br>
-            <input type = "submit" value = "Submit" onclick='addUser()'>
-        </form>
-        <table>
-            <thead>
-                <tr>
-                    <td>Image</td>
-                    <td>Name</td>
-                    <td>Price</td>
-                    <td>Retail Price</td>
-                    <td>Discout</td>
-                </tr>
-            </thead>
-            <tbody id='my-data'>
-
-            </tbody>
-        </table>
+    <body onload='loadData()' cz-shortcut-listen='true'>
+        <header class='m-0 p-0 cust-ouline-0 border-0 w-100 mw-100'>
+            <div class='container-fluid'>
+                <div class='row no-gutters'>
+                    <div class='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+                        <div class='mx-auto text-center py-3 my-4'>
+                            <button class='btn btn-primary' type='button' onclick='dispForm()'>Add User</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <article>
+                <section class='m-0 p-0 cust-ouline-0 border-0 w-100 mw-100'>
+                    <div class='container'>
+                        <div class='row'>
+                            <div class='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 '>
+                                <form action='http://localhost:5000/addUser' class='form-horizontal border d-none' method='POST' id='form'>
+                                    <div class='row text-center'>
+                                        <div class='col mt-4'>
+                                            <div class='row align-items-center'>
+                                                <label class='control-label col-sm-2' for='image'>Image Source:</label>
+                                                <div class='col-sm-9'> 
+                                                    <input class='form-control' type='text' name='img_url' id='imgUrl' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='row text-center'>
+                                        <div class='col my-2'>
+                                            <div class='row align-items-center'>
+                                                <label class='control-label col-sm-2 float-left' for='name'>Name:</label>
+                                                <div class='col-sm-9'> 
+                                                    <input class='form-control' type='text' name='name' id='name' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='row text-center'>
+                                        <div class='col my-2'>
+                                            <div class='row align-items-center'>
+                                                <label class='control-label col-sm-2' for='price'>Price:</label>
+                                                <div class='col-sm-9'> 
+                                                    <input class='form-control' type='text' name='price' id='price' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='row text-center'>
+                                        <div class='col my-2'>
+                                            <div class='row align-items-center'>
+                                                <label class='control-label col-sm-2' for='price'>Retail Price:</label>
+                                                <div class='col-sm-9'> 
+                                                    <input class='form-control' type='text' name='Retail_Price' id='retailPrice' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='row text-center'>
+                                        <div class='col my-2'>
+                                            <div class='row align-items-center'>
+                                                <label class='control-label col-sm-2' for='discount'>Discount:</label>
+                                                <div class='col-sm-9'> 
+                                                    <input class='form-control' type='text' name='discount' id='discount' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='row text-center'>
+                                        <div class='col my-2'>
+                                            <div class='row align-items-center'>
+                                                <label class='control-label col-sm-2' for='Number'>Data Number:</label>
+                                                <div class='col-sm-9'> 
+                                                    <input class='form-control' type='text' name='Data_Number' id='dataNumber' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col mt-4 mb-3' >
+                                            <div class='row align-items-center text-center justify-content-center'>
+                                                <button onclick='addUser()' class='btn btn-success' type='submit' value='submit'> Submit </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class='mt-5'>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <td>Image</td>
+                                                <td>Name</td>
+                                                <td>Price</td>
+                                                <td>Retail Price</td>
+                                                <td>Discout</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id='my-data'>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </main>
+        
         <script>
             function loadData() {
                 fetch('http://localhost:5000/product.json').then(function (res) {
                     return res.json();
                 }).then(function (myJson) {
-                    console.log(JSON.stringify(myJson));
+                    console.log(JSON.stringify(myJson))
                     let tableLines = ''
                     myJson.data.forEach(item => {
-                        tableLines +=
-                        `
-                        <tr>
-                            <td><img src='${item.indexImgUrl}' width='auto' height='160px'/></td>
-                            <td>${item.name}</td>
-                            <td>${item.price}</td>
-                            <td>${item.retailPrice}</td>
-                            <td>${item.discount}</td>
-                        </tr>
-
-                        `
-                    })
-                    document.querySelector('#my-data').innerHTML = tableLines
-                })
-            }
-            function addUser () {
-                fetch('http://localhost:5000/product.json').then(function (res) {
-                    return res.json();
-                }).then(function (myJson) {
-                    console.log(JSON.stringify(myJson))
-                    
-                    var imgUrl = document.querySelector('#imgUrl').value
-                    var name = document.querySelector('#name').value
-                    var price = document.querySelector('#price').value
-                    var retailPrice = document.querySelector('#retailPrice').value
-                    var discount = document.querySelector('#discount').value
-                    
-                    var newUser = {
-                        "data" :
-                        [{
-                            imgUrl,
-                            name,
-                            price,
-                            retailPrice,
-                            discount
-                        }]
-                    }
-                    var newMyJson = myJson.data.push(newUser)
-                    console.log(JSON.stringify(newMyJson))
-                    let tableLines = ''
-                    newMyJson.data.forEach(item => {
                         tableLines +=
                         `
                             <tr>
@@ -89,6 +149,65 @@
                     document.querySelector('#my-data').innerHTML = tableLines
                 })
             }
+            
+            // function addUser (event) {
+            //     event.preventDefault()
+
+                // var imgUrl = document.querySelector('#imgUrl').value
+                // var name = document.querySelector('#name').value
+                // var price = document.querySelector('#price').value
+                // var retailPrice = document.querySelector('#retailPrice').value
+                // var discount = document.querySelector('#discount').value
+                // var dataNumber = document.querySelector('#dataNumber').value
+                
+                // fetch('http://localhost:5000/addUser').then(function (res) {
+                //     return res.json()
+                // }).then(function (myJson) {
+                //     console.log(JSON.stringify(myJson))
+
+            //     fetch('http:localhost:5000/addUser', {
+            //         method: 'POST',
+            //         headers: new Headers()
+            //         //body:JSON.stringify({imgUrl:imgUrl, name:name, price:price, retailPrice:retailPrice, discount:discount, dataNumber:dataNumber})
+            //     }).then((res) => res.json())
+            //     .then((data) => console.log(data))
+            //     .catch((err) => console.log(err))
+            // }
+
+            // var newUser = {
+            //         "data" :
+            //         [{
+            //             imgUrl,
+            //             name,
+            //             price,
+            //             retailPrice,
+            //             discount,
+            //             dataNumber
+            //         }]
+            //     }
+
+            //     try {
+            //         const response = fetch('http://localhost:5000/product.json', {
+            //             method: 'POST',
+            //             body: JSON.stringify(newUser),
+            //             headers: {
+            //                 'Content-Type': 'application/json'
+            //             }
+            //         })
+            //         const json = response.newUser()
+            //         console.log('Success:', JSON.stringify(json))
+            //     }   catch (error) {
+            //         console.error('Error:', error)
+            //     }
+            
+
+            function dispForm () {
+                document.querySelector('#form').classList.toggle('d-block')
+            }
         </script>
+        <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script>
+        <script src='./bootstrap.min.js' ></script>
     </body>
 </html>
